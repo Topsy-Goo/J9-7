@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Добавить пункт</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<br>
+		<h1 style="color: navy;">Добавление пункта.</h1>
+		<br>
+		<h3 th:text="${prompt}"></h3>	<!-- Место для сообщения. -->
+		<br>
+		<!-- Форма посылает POST-метод по адресу /create. -->
+		<!-- поле name задаёт название параметра, которое попадёт в POST-метод. -->
+		<form method="post"	th:action="@{'/create'}" th:object="${student}" title="Форма для создания или изменения студента.">
+			<div class="row mb-3">
+				<label	for="idid" class="form-label col-1">ID:</label>
+				<input	type="text"	 name="id" class="form-control col-11" id="idid"
+						readonly="readonly"
+						th:text="${id}"
+						th:field="*{id}">
+			</div>
+			<div class="row mb-3">
+				<label	for="nomen" class="form-label col-1">Имя:</label>
+				<input	type="text"	 name="name" class="form-control col-11" id="nomen"
+						placeholder="Нужно указать"
+						required="required"
+						th:text="${name}"
+						th:field="*{name}">
+			</div>
+			<div class="row mb-3">
+				<label	for="stage"	class="form-label col-1">Возраст:</label>
+				<input	type="number" name="age" class="form-control col-11" id="stage"
+						placeholder="Нужно указать"
+						required="required" min="1"
+						th:text="${age}"
+						th:field="*{age}">
+			</div>
+			<button class="btn btn-success" type="submit" title="Сохранить информацию о студенте.">Сохранить</button>
+		</form>
+		<br>
+		<a th:href="@{'/showallstudents'}" class="btn btn-primary" title="К списку всех студентов">&lt;&nbsp;К списку всех пунктов</a>
+	</div>
+</body>
+</html>

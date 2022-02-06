@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+		   <!-- xmlns:th="" задаёт пространство имён. -->
+<head>
+	<meta charset="UTF-8">
+	<title>Все пункты</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body  marginwidth="100" style="font-size: 16pt">
+	<div class="container">
+		<br>
+		<h1 style="color: navy;">Информация</h1>
+		<br>
+
+		<p><h3 th:text="${prompt}"></h3></p>	<!-- Место для сообщения. -->
+
+		<ul th:object="${student}" type="none">
+			<li th:text="'ID: ' + ${student.id}"   title="ID студента" value="*"></li>
+			<li th:text="'Имя: ' + ${student.name}" title="Имя студента"></li>
+			<li th:text="'Взраст: ' + ${student.age}"  title="Возраст студента"></li>
+		</ul>
+		<br>
+		<a th:href="@{'/showallstudents'}" class="btn btn-primary" title="К списку всех студентов">&lt;&nbsp;К списку всех пунктов</a>
+	</div>
+	<br>
+	&nbsp;
+	<br>
+</body>
+</html>
